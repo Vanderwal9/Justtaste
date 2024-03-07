@@ -1,0 +1,213 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    text-align: center;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100%;
+    box-sizing: border-box; /* Include padding in the height */
+}
+
+.search-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 100;
+    background-color: #f4f4f4;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.search-container input[type="text"] {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid grey;
+}
+
+.search-container button {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    background-color: white;
+    cursor: pointer;
+}
+
+.hot-cold-selection {
+    text-align: center;
+    margin: 20px 0;
+    font-size: 1.5em;
+}
+
+.hot-label { color: red; }
+.cold-label { color: lightblue; }
+
+h1 { color: violet; font-size: 3em; }
+h2 { font-size: 1.75em; margin-bottom: 10px; }
+
+.flavor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-template-rows: repeat(2, auto); /* 2 rows */
+    gap: 41px; /* Increased gap for both rows and columns */
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.flavor-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px; /* Space between label-input container and slider */
+}
+
+.label-input-container {
+    display: flex;
+    align-items: center;
+}
+
+.flavor-item label {
+    font-size: 1.2em;
+    cursor: pointer;
+    margin-right: 10px; /* Space between label and input */
+}
+
+.flavor-item input[type="number"] {
+    width: 40px; /* Adjust the width as needed */
+}
+
+.flavor-item input[type="range"] {
+    width: 100%;
+}
+
+
+/* Color classes for labels */
+.label-spice { color: rgb(255, 85, 0); }
+.label-sweet { color: rgb(255, 208, 0) }
+.label-sour { color: rgb(0, 84, 0); }
+.label-bitter { color: black; }
+.label-umami { color: rgb(134, 60, 0); }
+.label-salt { color: rgba(88, 88, 88, 0.318); }
+
+#results, #flavorForm {
+    margin-top: 20px;
+}
+
+.calculate-scores-btn {
+    /* Add your CSS styles here */
+    padding: 10px 20px;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.calculate-scores-btn:hover 
+{
+    background-color: #45a049;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: flex-start; /* Align to the left */
+    padding: 10px;
+    width: 100%; /* Ensure the top bar spans the full width */
+}
+
+
+.login-register-btn {
+    margin-right: 20px; /* Space before search bar */
+    background-color: #f4f4f4; /* Non-black background */
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.popup {
+    display: none;
+    position: fixed; /* Centered on screen */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+    z-index: 10; /* Make sure it's above other elements */
+}
+
+.greeting {
+    color: rgba(212, 18, 18, 0.423);
+    font-size: 1em;
+    /* Add more styles as needed */
+}
+
+
+.close-btn {
+    display: block;
+    text-align: right;
+    cursor: pointer;
+    margin-top: 10px;
+}
+#userDashboard {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+#userDashboard > div {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+#userDashboard {
+    position: fixed;
+    top: 100px; /* Adjust as needed to position under the greeting */
+    left: 170px; /* Adjust to position from the left */
+    width: 300px; /* Adjust width as needed */
+    max-height: 80%; /* Adjust height as needed */
+    overflow-y: auto; /* Enables scrolling if the content is too long */
+    /* Rest of your styles for the popup */
+}
+
+
+
+/* Rest of your CSS */
+
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    width: 100%;
+    margin-top: auto; /* Push the footer to the bottom */
+}
+
+footer div {
+    display: flex;
+    justify-content: space-around;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color 0.3s ease;
+}
+
+footer a:hover { color: #ddd; }
+footer p { margin: 10px 0; }

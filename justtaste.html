@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Just Taste</title>
+    <link rel="stylesheet" type="text/css" href="justtaste.css">
+</head>
+<body>
+    <!-- <header>
+        <nav class="navbar">
+            <div class="logo">Just Taste</div>
+            <ul class="nav-links">
+                <li><a href="#flavorForm">Flavors</a></li>
+                <li><a href="#results">Results</a></li>
+                Add more links as needed
+            </ul>
+        </nav>
+    </header> -->
+    <div class="top-bar">
+        <!-- Login/Register Button -->
+        <button class="login-register-btn" onclick="toggleLoginForm()">Login/Register</button>
+    
+        <!-- User Dashboard Link (Initially hidden) -->
+        <button id="dashboardLink" onclick="displayUserDashboard(username)" style="display: none;">Go to Dashboard</button>
+    
+        <!-- Greeting Message (Initially hidden) -->
+        <div class="greeting-message" style="display: none;"></div>
+    
+        <!-- Search Container -->
+        <div class="search-container">
+            <input type="text" id="searchBar" placeholder="Search...">
+            <button onclick="searchFlavors()">Search</button>
+        </div>
+    </div>
+    
+    
+    <!-- Login Form -->
+    <div id="loginForm" class="popup">
+        <h3>Login</h3>
+        <input type="text" id="loginUsername" placeholder="Username">
+        <input type="password" id="loginPassword" placeholder="Password">
+        <button onclick="loginUser()">Login</button>
+        <p>Not registered? <span onclick="toggleRegisterForm()">Create an account</span></p>
+        <span class="close-btn" onclick="toggleLoginForm()">Close</span>
+    </div>
+    
+    <!-- Registration Form -->
+    <div id="registerForm" class="popup">
+        <h3>Register</h3>
+        <input type="text" id="registerUsername" placeholder="Username">
+        <input type="email" id="registerEmail" placeholder="Email">
+        <input type="password" id="registerPassword" placeholder="Password">
+        <button onclick="registerUser()">Register</button>
+        <span class="close-btn" onclick="toggleRegisterForm()">Close</span>
+    </div>
+    <h1>Just Taste</h1>
+
+    <h2>Enter Your Flavor Preferences</h2>
+    <div class="hot-cold-selection">
+        <label><input type="checkbox" id="hotCheckbox"> <span class="hot-label">Hot</span></label>
+        <label><input type="checkbox" id="coldCheckbox"> <span class="cold-label">Cold</span></label>
+    </div>
+    <div id="userDashboard" class="popup" style="display: none;">
+        <h2>User Dashboard</h2>
+        <div id="recentSearches">
+            <h3>Recent Searches</h3>
+            <ul id="recentSearchesList"></ul>
+        </div>
+        <div id="favorites">
+            <h3>Favorites</h3>
+            <!-- Content goes here -->
+        </div>
+        <!-- Add other sections as needed -->
+        <span class="close-btn" onclick="toggleUserDashboard()">Close</span>
+    </div>
+    
+
+    <form id="flavorForm">
+        <div class="flavor-grid">
+            <!-- Spice -->
+            <div class="flavor-item">
+                <div class="info-ellipse" >
+                    <label for="spiceSlider" class="label-spice" onclick="showInfo('spice')">Spice (1-4):</label>
+                    <input type="number" id="spiceInput" name="spice" min="1" max="4" oninput="updateSlider('spiceSlider', this.value)" required>
+                </div>
+                <input type="range" id="spiceSlider" name="spiceSlider" min="1" max="4" oninput="updateNumberInput('spiceInput', this.value)">
+
+            </div>
+
+            <!-- Sweet -->
+            <div class="flavor-item">
+                <div class="info-ellipse" >
+                    <label for="sweetSlider" class="label-sweet" onclick="showInfo('sweet')">Sweet (1-4):</label>
+                    <input type="number" id="sweetInput" name="sweet" min="1" max="4" oninput="updateSlider('sweetSlider', this.value)" required>
+                </div>
+                <input type="range" id="sweetSlider" name="sweetSlider" min="1" max="4" oninput="updateNumberInput('sweetInput', this.value)">
+            </div>
+
+            <!-- Sour -->
+            <div class="flavor-item">
+                <div class="info-ellipse">
+                    <label for="sourSlider" class="label-sour" onclick="showInfo('sour')">Sour (1-4):</label>
+                    <input type="number" id="sourInput" name="sour" min="1" max="4" oninput="updateSlider('sourSlider', this.value)" required>
+
+                </div>
+                <input type="range" id="sourSlider" name="sourSlider" min="1" max="4" oninput="updateNumberInput('sourInput', this.value)">
+            </div>
+
+            <!-- Bitter -->
+            <div class="flavor-item">
+                <div class="info-ellipse" >
+                    <label for="bitterSlider" class="label-bitter" onclick="showInfo('bitter')">Bitter (1-4):</label>
+                    <input type="number" id="bitterInput" name="bitter" min="1" max="4" oninput="updateSlider('bitterSlider', this.value)" required>
+
+                </div>
+                <input type="range" id="bitterSlider" name="bitterSlider" min="1" max="4" oninput="updateNumberInput('bitterInput', this.value)">
+            </div>
+
+            <!-- Umami -->
+            <div class="flavor-item">
+                <div class="info-ellipse" >
+                    <label for="umamiSlider" class="label-umami" onclick="showInfo('umami')">Umami (1-4):</label>
+                    <input type="number" id="umamiInput" name="umami" min="1" max="4" oninput="updateSlider('umamiSlider', this.value)" required>
+
+                </div>
+                <input type="range" id="umamiSlider" name="umamiSlider" min="1" max="4" oninput="updateNumberInput('umamiInput', this.value)">
+            </div>
+
+            <!-- Salt -->
+            <div class="flavor-item">
+                <div class="info-ellipse">
+                    <label for="saltSlider" class="label-salt" onclick="showInfo('salt')">Salt (1-4):</label>
+                    <input type="number" id="saltInput" name="salt" min="1" max="4" oninput="updateSlider('saltSlider', this.value)" required>
+                </div>
+                <input type="range" id="saltSlider" name="saltSlider" min="1" max="4" oninput="updateNumberInput('saltInput', this.value)">
+            </div>
+        </div>
+
+        <div class="calculate-scores-container">
+            <button type="button" class="calculate-scores-btn" onclick="calculateFlavorScores()">Calculate Scores</button>
+        </div>
+    </form>
+
+    <!-- <h2>Results:</h2> -->
+    <div id="results"></div>
+    <footer>
+        <p>Contact us at: vanderwalwill@gmail.com</p>
+        <div>
+            <a href="your_facebook_link" target="_blank">Facebook</a>
+            <a href="your_twitter_link" target="_blank">Twitter</a>
+            <a href="your_instagram_link" target="_blank">Instagram</a>
+            <!-- Add more social media links as needed -->
+        </div>
+        <a href="http://www.justtaste.online">About Us</a>
+        <!-- Add other links or information as needed -->
+    </footer>
+
+    <!-- <button onclick="addFlavor('Test Flavor', 'sweet', false)">Add Test Flavor</button>
+    <button onclick="getAllFlavors()">Get All Flavors</button> -->
+
+    <script src="justtaste.js"></script>
+</body>
+</html>

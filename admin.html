@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flavor Admin Panel</title>
+    <link rel="stylesheet" type="text/css" href="admin.css">
+</head>
+<body>
+    <h1>Flavor Admin Panel</h1>
+
+    <!-- Form for adding a new food item with ratings for each taste -->
+    <form id="addFoodForm">
+        <div class="form-group">
+            <label for="foodName">Food Name:</label>
+            <input type="text" id="foodName" placeholder="Enter food name">
+        </div>
+
+        <div class="form-group">
+            <label for="spiceRating">Spice Rating (1-4):</label>
+            <input type="number" id="spiceRating" min="1" max="4">
+        </div>
+
+        <div class="form-group">
+            <label for="sweetRating">Sweet Rating (1-4):</label>
+            <input type="number" id="sweetRating" min="1" max="4">
+        </div>
+
+        <div class="form-group">
+            <label for="sourRating">Sour Rating (1-4):</label>
+            <input type="number" id="sourRating" min="1" max="4">
+        </div>
+
+        <div class="form-group">
+            <label for="bitterRating">Bitter Rating (1-4):</label>
+            <input type="number" id="bitterRating" min="1" max="4">
+        </div>
+
+        <div class="form-group">
+            <label for="umamiRating">Umami Rating (1-4):</label>
+            <input type="number" id="umamiRating" min="1" max="4">
+        </div>
+
+        <div class="form-group">
+            <label for="saltRating">Salt Rating (1-4):</label>
+            <input type="number" id="saltRating" min="1" max="4">
+        </div>
+        
+        <input type="checkbox" id="addIsHot"> Hot
+        <input type="checkbox" id="addIsCold"> Cold
+        <button type="submit">Add Food Item</button>
+    </form>
+
+    <form id="deleteFoodForm">
+        <div class="form-group">
+            <label for="deleteFoodName">Food Name to Delete:</label>
+            <input type="text" id="deleteFoodName" placeholder="Enter food name to delete">
+        </div>
+        <button type="submit">Delete Food Item</button>
+    </form> 
+
+    <!-- Form for updating ratings for a specific food item -->
+    <form id="updateFoodForm">
+        <div class="form-group">
+            <label for="updateFoodName">Food Name to Update:</label>
+            <input type="text" id="updateFoodName" placeholder="Enter food name to update">
+        </div>
+
+        <div class="form-group">
+            <select id="tasteToUpdate">
+                <option value="spice">Spice</option>
+                <option value="sweet">Sweet</option>
+                <option value="sour">Sour</option>
+                <option value="bitter">Bitter</option>
+                <option value="umami">Umami</option>
+                <option value="salt">Salt</option>
+            </select>
+            <input type="number" id="updateRating" min="1" max="4" placeholder="New Rating (1-4)">
+        </div>
+        <input type="checkbox" id="updateIsHot"> Hot
+        <input type="checkbox" id="updateIsCold"> Cold
+        <button type="submit">Update Food Item</button>
+    </form>
+
+    <!-- Include your JavaScript file -->
+    <script src="admin.js"></script>
+</body>
+</html>
