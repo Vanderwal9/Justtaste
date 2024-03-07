@@ -2,19 +2,20 @@ const express = require('express');
 const { Pool } = require('pg');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
+require('dotenv').config(); // Add this line to use dotenv for environment variables
 
 const app = express();
 app.use(express.json());
 app.use(cors());
 
+// Use environment variables for database connection details
 const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'postgres',
-    password: 'Bromley23',
-    port: 5432,
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_DATABASE,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT,
 });
-
 // User Registration Endpoint
 app.post('/api/register', async (req, res) => {
     try {
